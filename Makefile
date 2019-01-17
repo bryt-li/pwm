@@ -6,15 +6,14 @@ PWM = https://github.com/pwm-project/pwm.git
 
 all: pub
 
-clone: pwm-source
-	rm -rf pwm-source
-	git clone $(PWM) pwm-source
+source:
+	git clone $(PWM) $@
 
-build: clone
-	cd pwm-source;mvn package
+build: source
+	cd source;mvn package
 
 load: build
-	docker load --input=pwm-source/docker/target/jib-image.tar
+	docker load --input=source/docker/target/jib-image.tar
 
 tag: load
 	docker tag $(NAME):$(VERSION) $(REPO):$(VERSION)
