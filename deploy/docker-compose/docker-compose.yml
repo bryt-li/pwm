@@ -1,0 +1,12 @@
+version: '2'
+services:
+  pwm:
+    image: 120896031351.dkr.ecr.ap-northeast-2.amazonaws.com/pwm/pwm-webapp:latest
+    container_name: pwm
+    ports:
+#      - "8443:8443"
+      - "2080:8080"
+    volumes:
+      - ./pwm/PwmConfiguration.xml:/config/PwmConfiguration.xml
+    depends_on:
+      - openldap
