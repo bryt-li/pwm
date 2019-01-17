@@ -1,0 +1,13 @@
+# PWM: Password Self-Service Application
+
+## Build Docker Image & Push to ECR
+```
+#login to ECR
+$(aws ecr get-login --no-include-email --region ap-northeast-2 --profile oriente-central)
+
+#build & push
+make
+```
+
+## Deployment
+see `./deploy`
